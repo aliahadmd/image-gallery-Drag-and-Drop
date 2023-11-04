@@ -1,4 +1,4 @@
-# image gallery Drag and Drop without third party libries.
+# image gallery Drag and Drop without third party libraries.
 
 local host setup
 ----------------------
