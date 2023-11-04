@@ -34,7 +34,7 @@ function App() {
   ) => {
     e.dataTransfer.setData("index", index.toString());
     setDraggedIndex(index);
-    e.dataTransfer.setDragImage(e.target, 50, 50); // Prevents default ghost image
+    e.dataTransfer.setDragImage(e.target as Element, 50, 50); // Prevents default ghost image
   };
 
   // the handleDragOver function is responsible for configuring the behavior of the drag-and-drop operation when an element is being dragged over a specific element.
@@ -149,9 +149,7 @@ function App() {
             className={`container__children ${index === 0 ? "large" : ""} ${
               index === draggedIndex ? "dragging" : ""
             } ${index === virtualDropZone ? "virtual-drop-zone" : ""} ${
-              selectedPhotos.includes(index) > 0
-                ? "container__children__opacity"
-                : ""
+              selectedPhotos.includes(index) && "container__children__opacity"
             }`}
             draggable
             onDragStart={(e) => handleDragStart(e, index)}
