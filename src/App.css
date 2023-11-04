@@ -1,0 +1,209 @@
+.main {
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 1rem;
+}
+
+.main__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 40px;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    /* Add any additional styles you want for the text, e.g., color, text-decoration, etc. */
+    color: rgb(219, 4, 4);
+}
+
+.main__header__checkbox__input {
+    margin-right: 10px;
+}
+
+.main__header__checkbox__label {
+    font-weight: 600;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+
+    grid-auto-flow: dense;
+    /* Fill empty spaces more effectively */
+    padding: 30px;
+}
+
+.container__children {
+    grid-column: span 1;
+    grid-row: span 1;
+    transition: transform 0.2s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+}
+
+
+.container__children[draggable] {
+    cursor: default;
+}
+
+.container__children.large {
+    grid-column: span 2;
+    grid-row: span 2;
+    transition: transform 0.2s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.container__children.dragging {
+    transform: scale(1.05);
+    opacity: 0.5;
+}
+
+.container__children.virtual-drop-zone {
+
+    border-radius: 10px;
+    padding: 2px;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: default;
+}
+
+.container__children.virtual-drop-zone[data-drag-over="true"] {
+    position: relative;
+    /* Add relative positioning to the container */
+}
+
+.container__children.virtual-drop-zone[data-drag-over="true"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EAF0F1;
+    /* Set the background color */
+    border: 2px solid #d2d6d8;
+    z-index: 1;
+    /* Ensure the background color is in front of the image */
+
+    /* You can adjust the opacity as needed */
+}
+
+
+.container__children__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container__children__checkbox {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    opacity: 0;
+    /* Initially hide the checkbox */
+    transition: opacity 0.2s ease;
+    /* Add a smooth transition for the opacity */
+
+}
+
+.container__children__opacity {
+    opacity: 0.4;
+}
+
+.container__children:hover .container__children__checkbox {
+    opacity: 1;
+    /* Show the checkbox when hovering over the container */
+}
+
+
+
+.container__children__checkbox__display__true {
+    opacity: 1;
+    /* Show the checkbox when hovering over the container */
+}
+
+
+
+
+
+input[type=checkbox] {
+    accent-color: #0024c7;
+}
+
+.info {
+    background: #fff9c4;
+    border-radius: 6px;
+    padding: 0.5rem;
+    text-align: center;
+    width: clamp(300px, 60%, 850px);
+}
+
+@supports (accent-color: #fff) {
+    .info {
+        display: none;
+    }
+}
+
+
+
+
+
+
+.container__children[draggable]:hover {
+    filter: brightness(0.4);
+    cursor: default;
+}
+
+.upload {
+
+    height: 10 rem;
+    width: 10 rem;
+    border: 2px dotted #999999;
+    border-radius: 5px;
+    padding: 2px;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: default;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    filter: opacity(0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ececec;
+
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .upload {
+        height: 10rem;
+    }
+}
